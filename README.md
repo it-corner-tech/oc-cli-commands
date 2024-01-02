@@ -1,6 +1,16 @@
 # oc-cli-commands
 Openshift CLI genearl commands with examples and cheat sheet
 
+## OC AUTO-COMPLETION
+
+### OC AUTO-COMPLETION BASH
+
+```bash
+oc completion bash > ~/.oc_bash_completion.sh
+echo "source .oc_bash_completion.sh" >> ~/.bashrc
+source ~/.bashrc
+```
+
 ## OC GET
 
 ### OC GET JSON
