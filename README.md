@@ -216,6 +216,18 @@ oc api-resources --api-group 'oauth.openshift.io'
 
 ## OC OPERATORS
 
+## OC IMAGE
+
+You can use this command to inspect, configure, and retrieve information about container images.
+
+### OC IMAGE INFO
+
+Inspects and retrieves information about a container image:
+
+```bash
+oc image info registry.access.redhat.com/ubi9/httpd-24:1-233 --filter-by-os amd64
+```
+
 ### OC GET OPERATORS
 
 ```bash
