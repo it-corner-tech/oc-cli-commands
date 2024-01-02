@@ -40,6 +40,20 @@ oc cluster-info
 oc api-versions
 ```
 
+## OC PROJECT
+
+Create new project:
+
+```bash
+oc new-project test
+```
+
+Fetch project info like UID and GID:
+
+```bash
+oc describe project test
+```
+
 ## OC GET
 
 ### OC GET JSON
@@ -81,6 +95,77 @@ oc get pods -o yaml | yq -r - 'items[*].metadata.name'
 
 ```bash
 oc get pod my-pod -o template --template={{.spec.containers[0].image}}
+```
+
+## OC RUN
+
+Run a pod and attach a session:
+
+```bash
+oc run -it my-app --image registry.access.redhat.com/ubi9/ubi --command -- /bin/bash
+```
+
+Add restart option:
+
+```bash
+oc run -it my-app --image registry.access.redhat.com/ubi9/ubi --restart Never --command -- /bin/bash
+```
+
+Auto delete pod:
+
+```bash
+oc run -it my-app --rm --image registry.access.redhat.com/ubi9/ubi --restart Never --command -- /bin/bash
+```
+
+Add environment variables:
+
+```bash
+oc run -it my-app \
+--env MY_VAR=myenvvariable \
+--rm \
+--image registry.access.redhat.com/ubi9/ubi \
+--restart Never \
+--command -- /bin/bash
+```
+
+## OC EXEC
+
+Execute a command in a running container:
+
+```bash
+oc exec my-app -- date
+```
+
+Select the container if the POD has multiple containers
+
+```bash
+oc exec my-app -c contaier1 -- date
+```
+
+Attach a session to a running container
+
+```bash
+oc exec my-app -c contaier1 -it -- bash
+```
+
+## OC LOGS
+
+Retrieve the logs of a container:
+
+```bash
+oc logs my-app --tail=10
+```
+
+Retrieve the logs of the previous container instance if exists:
+
+```bash
+oc logs my-app --tail=10 -p
+```
+
+Follow the logs
+
+```bash
+oc logs my-app --tail=10 -f
 ```
 
 ## OC EVENTS
