@@ -1,4 +1,5 @@
 # oc-cli-commands
+
 Openshift CLI genearl commands with examples and cheat sheet
 
 ## OC AUTO-COMPLETION
@@ -47,4 +48,22 @@ oc get pods -o yaml | yq -r - 'items[*].metadata.name'
 
 ```bash
 oc get pod my-pod -o template --template={{.spec.containers[0].image}}
+```
+
+## OC ADM
+
+### OC ADM TOP
+
+Show usage statistics of resources on the server
+
+#### OC ADM TOP PODS
+
+```bash
+oc adm top pods -A --sum
+```
+
+#### OC ADM TOP NODE
+
+```bash
+oc adm top node
 ```
