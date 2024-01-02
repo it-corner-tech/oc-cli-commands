@@ -281,7 +281,7 @@ systemctl is-active crio
 systemctl status kubelet
 systemctl is-active kubelet
 crictl ps # list containers on the node
-crictl ps --name  # filters the containers by name
+crictl ps --name my-container-name # filters the containers by name
 crictl ps --name my-container-name -o json | jq .containers[0].id # Gets the contaier ID <e.g 27943ae4f3024>
 crictl inspect -o json 27943ae4f3024 | jq .info.pid # Gets the container PID <e.g 43453>
 crictl inspect 27943ae4f3024 | grep pid # Gets the container PID as well <e.g 43453>
