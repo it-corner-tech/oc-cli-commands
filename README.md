@@ -1,6 +1,6 @@
 # oc-cli-commands
 
-Openshift CLI genearl commands with examples and cheat sheet
+Most common Openshift CLI commands with examples.
 
 ## OC AUTO-COMPLETION
 
