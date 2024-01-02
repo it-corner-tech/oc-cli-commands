@@ -26,6 +26,11 @@ oc get pod my-pod -o json | jq .spec.containers[0].image
 oc get pod my-pod -o jsonpath --template={.spec.containers[0].image}
 ```
 
+```bash
+oc get node master01 -o jsonpath=\
+'{"Allocatable:\n"}{.status.allocatable}{"\n\n"}{"Capacity:\n"}{.status.capacity{"\n"}'
+```
+
 ### OC GET GO-TEMPLATE
 
 ```bash
@@ -50,6 +55,42 @@ oc get pods -o yaml | yq -r - 'items[*].metadata.name'
 oc get pod my-pod -o template --template={{.spec.containers[0].image}}
 ```
 
+## OC EVENTS
+
+```bash
+oc get events --sort-by='.metadata.creationTimestamp'
+```
+
+```bash
+oc get events --sort-by='.metadata.creationTimestamp' -A
+```
+
+```bash
+oc get events --sort-by='.lastTimestamp'
+```
+
+```bash
+oc get events -A --output-watch-events=true --watch-only
+```
+
+## OC OPERATORS
+
+### OC GET OPERATORS
+
+```bash
+oc get operators
+```
+
+```bash
+oc get clusteroperators
+```
+
+### OC DESCRIBE OPERATOR
+
+```bash
+oc describe clusteroperators openshift-apiserver
+```
+
 ## OC ADM
 
 ### OC ADM TOP
@@ -60,6 +101,10 @@ Show usage statistics of resources on the server
 
 ```bash
 oc adm top pods -A --sum
+```
+
+```bash
+oc adm top pods etcd-master01 -n openshift-etcd --containers
 ```
 
 #### OC ADM TOP NODE
