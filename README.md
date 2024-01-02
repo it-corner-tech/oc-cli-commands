@@ -12,6 +12,34 @@ echo "source .oc_bash_completion.sh" >> ~/.bashrc
 source ~/.bashrc
 ```
 
+## OC LOGIN
+
+```bash
+oc login -u user -p password https://ocp-api
+```
+
+### OC LOGIN ALIAS
+
+```bash
+cp ~/.bashrc ~/.bashrc.bak
+echo 'alias ocplogin="oc login -u user -p password https://ocp-api"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+## OC VERSION
+
+```bash
+oc version
+```
+
+```bash
+oc cluster-info
+```
+
+```bash
+oc api-versions
+```
+
 ## OC GET
 
 ### OC GET JSON
@@ -73,6 +101,34 @@ oc get events --sort-by='.lastTimestamp'
 oc get events -A --output-watch-events=true --watch-only
 ```
 
+## OC EXPLAIN
+
+```bash
+oc explain pod.spec --recursive
+```
+
+```bash
+oc explain pod.spec.securityContext --recursive
+```
+
+## OC RESOURCES
+
+```bash
+oc api-resources
+```
+
+```bash
+oc api-resources --namespaced
+```
+
+```bash
+oc api-resources --api-group ''
+```
+
+```bash
+oc api-resources --api-group 'oauth.openshift.io'
+```
+
 ## OC OPERATORS
 
 ### OC GET OPERATORS
@@ -111,4 +167,48 @@ oc adm top pods etcd-master01 -n openshift-etcd --containers
 
 ```bash
 oc adm top node
+```
+
+### OC ADM NODE-LOGs
+
+```bash
+oc adm node-logs master01
+```
+
+```bash
+oc adm node-logs master01 -u crio
+```
+
+```bash
+oc adm node-logs master01 -u crio --tail 10
+```
+
+## OC DEBUG
+
+### OC DEBUG NODE
+
+```bash
+oc debug node/master01
+
+chroot /host
+systemctl status crio
+systemctl is-active crio
+systemctl status kubelet
+systemctl is-active kubelet
+```
+
+### OC MUST-GATHER
+
+```bash
+oc adm must-gather --dest-dir /tmp
+```
+
+### OC INSPECT
+
+```bash
+oc adm inspect clusteroperator/kube-apiserver --dest-dir /tmp/
+```
+
+```bash
+oc adm inspect clusteroperator/kube-apiserver --dest-dir /tmp/ --since 5m
 ```
