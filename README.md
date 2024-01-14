@@ -276,6 +276,69 @@ oc get clusteroperators
 oc describe clusteroperators openshift-apiserver
 ```
 
+## OC NEW-APP
+
+Create a new application by specifying source code, templates, and/or images.
+
+### OC NEW-APP FROM TEMPLATE
+
+```bash
+oc new-app -l team=red --template mysql-persistent \
+  -p MYSQL_USER=developer \
+  -p MYSQL_PASSWORD=developer
+```
+
+### OC NEW-APP FROM IMAGE
+
+```bash
+oc new-app --name db-image -l team=blue \
+  --image registry.ocp4.example.com:8443/rhel9/mysql-80:1 \
+  -e MYSQL_USER=developer \
+  -e MYSQL_PASSWORD=developer \
+  -e MYSQL_ROOT_PASSWORD=redhat
+```
+
+## OC CREATE
+
+### OC CREATE JOB
+
+```bash
+oc create job \
+  date-job \
+  --image registry.access.redhat.com/ubi8/ubi \
+  -- /bin/bash -c "date" 
+```
+
+### OC CREATE CRONJOB
+
+```bash
+oc create cronjob date-cronjob \
+    --image registry.access.redhat.com/ubi8/ubi \
+    --schedule "*/1 * * * *" \
+    -- date
+```
+
+### OC CREATE DEPLOYMENT
+
+```bash
+oc create deployment \
+    my-deployment \
+    --image registry.access.redhat.com/ubi8/ubi \
+    --replicas
+```
+
+## OC SET
+
+Configure application resources. This commands help you make changes to existing application resources.
+
+### OC SET ENV
+
+```bash
+oc set env deployment/my-db MYSQL_USER=developer \
+ MYSQL_PASSWORD=developer \
+ MYSQL_DATABASE=samepledb
+```
+
 ## OC ADM
 
 ### OC ADM TOP
