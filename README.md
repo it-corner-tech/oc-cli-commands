@@ -214,7 +214,39 @@ oc api-resources --api-group ''
 oc api-resources --api-group 'oauth.openshift.io'
 ```
 
-## OC OPERATORS
+## OC PATCH
+
+Update fields of a resource
+
+```bash
+oc patch pod valid-pod --type='json' \
+-p='[{"op": "replace", "path": "/spec/containers/0/image", \
+"value":"http://registry.access.redhat.com/ubi8/httpd-24"}]'
+```
+
+## OC CP
+
+Copy files to and from Containers
+
+```bash
+oc cp pod:pod/dir /local/dir
+```
+
+## OC PORT-FORWARD
+
+Remove container access
+
+```bash
+oc port-forward podname EXTERNAL_PORT:CONTAINER_POD
+```
+
+## OC RSH
+
+Connect to running container
+
+```bash
+oc rsh pod
+```
 
 ## OC IMAGE
 
@@ -315,4 +347,18 @@ oc adm inspect clusteroperator/kube-apiserver --dest-dir /tmp/
 
 ```bash
 oc adm inspect clusteroperator/kube-apiserver --dest-dir /tmp/ --since 5m
+```
+
+## Skopeo
+
+### List images tags
+
+```bash
+skopeo list-tags docker://repo/image
+```
+
+### Inspect image
+
+```bash
+skopeo inspect --config docker://reg/image:tag
 ```
