@@ -341,19 +341,22 @@ oc create deployment \
 From literal
 
 ```bash
-oc create secret generic my_secret_name --from-literal key1=value1 --from-literal key2=value2
+oc create secret generic my_secret_name\
+ --from-literal key1=value1 --from-literal key2=value2
 ```
 
 From file
 
 ```bash
-oc create secret generic my_secret_name --from-file key1=/path/to/file
+oc create secret generic my_secret_name\
+ --from-file key1=/path/to/file
 ```
 
 TLS secret
 
 ```bash
-oc create secret tls my_secret_name --cert /path/to/cert --key /path/to/key
+oc create secret tls my_secret_name\
+ --cert /path/to/cert --key /path/to/key
 ```
 
 ### OC CREATE CONFIG MAPS
@@ -387,13 +390,15 @@ oc set env deployment/my-deployment --from secret/my-secret
 Type secret
 
 ```bash
-oc set volume deployment/mydeployment --add --type secret --secret-name my-secret --mount-path /app-secret
+oc set volume deployment/mydeployment --add\
+ --type secret --secret-name my-secret --mount-path /app-secret
 ```
 
 Type configmap
 
 ```bash
-oc set volume deployment/mydeployment --add --type configmap --configmap-name my-configmap --mount-path /app-configs
+oc set volume deployment/mydeployment --add\
+ --type configmap --configmap-name my-configmap --mount-path /app-configs
 ```
 
 ## OC EXPOSE
