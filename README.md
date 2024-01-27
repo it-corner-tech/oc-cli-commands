@@ -353,6 +353,14 @@ TLS secret
 oc create secret tls my_secret_name --cert /path/to/cert --key /path/to/key
 ```
 
+### OC CREATE CONFIG MAPS
+
+From literal
+
+```bash
+oc create cm my-config --from-literal key1=value1
+```
+
 ## OC SET
 
 Configure application resources. This commands help you make changes to existing application resources.
@@ -363,6 +371,26 @@ Configure application resources. This commands help you make changes to existing
 oc set env deployment/my-db MYSQL_USER=developer \
  MYSQL_PASSWORD=developer \
  MYSQL_DATABASE=samepledb
+```
+
+From secret
+
+```bash
+oc set env deployment/my-deployment --from secret/my-secret
+```
+
+### OC SET VOLUME
+
+Type secret
+
+```bash
+oc set volume deployment/mydeployment --add --type secret --secret-name my-secret --mount-path /app-secret
+```
+
+Type configmap
+
+```bash
+oc set volume deployment/mydeployment --add --type configmap --configmap-name my-configmap --mount-path /app-configs
 ```
 
 ## OC EXPOSE
