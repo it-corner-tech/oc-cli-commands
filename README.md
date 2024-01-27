@@ -115,13 +115,15 @@ oc run -it my-app --image registry.access.redhat.com/ubi9/ubi --command -- /bin/
 Add restart option:
 
 ```bash
-oc run -it my-app --image registry.access.redhat.com/ubi9/ubi --restart Never --command -- /bin/bash
+oc run -it my-app --image registry.access.redhat.com/ubi9/ubi\
+ --restart Never --command -- /bin/bash
 ```
 
 Auto delete pod:
 
 ```bash
-oc run -it my-app --rm --image registry.access.redhat.com/ubi9/ubi --restart Never --command -- /bin/bash
+oc run -it my-app --rm --image registry.access.redhat.com/ubi9/ubi\
+ --restart Never --command -- /bin/bash
 ```
 
 Add environment variables:
