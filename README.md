@@ -339,6 +339,18 @@ oc set env deployment/my-db MYSQL_USER=developer \
  MYSQL_DATABASE=samepledb
 ```
 
+## OC EXPOSE
+
+Expose containers internally as services or externally via routes
+
+```bash
+oc expose deployment/db --port 8080
+```
+
+```bash
+oc expose service nginx
+```
+
 ## OC ADM
 
 ### OC ADM TOP
