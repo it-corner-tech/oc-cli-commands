@@ -56,6 +56,12 @@ oc describe project test
 
 ## OC GET
 
+### OC GET SHOW LABELS
+
+```bash
+oc get pods --show-lables
+```
+
 ### OC GET JSON
 
 ```bash
