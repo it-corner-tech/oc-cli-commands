@@ -357,6 +357,27 @@ oc expose deployment/db --port 8080
 oc expose service nginx
 ```
 
+```bash
+oc expose service nginx --hostname api.aps.acme.com
+```
+
+## OC SCALE
+
+Set a new size for a deployment, replica set, replication controller, or stateful set.
+
+```bash
+oc scale deployment test --replicas 2
+```
+
+## OC ANNOTATE
+
+Update the annotations on one or more resources.
+
+```bash
+# Enable sticky session on a route
+oc annotate route test router.openshift.io/cookie_name="my-sticky-session"
+```
+
 ## OC ADM
 
 ### OC ADM TOP
