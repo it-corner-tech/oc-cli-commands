@@ -333,6 +333,26 @@ oc create deployment \
     --replicas
 ```
 
+### OC CREATE SECRET
+
+From literal
+
+```bash
+oc create secret generic my_secret_name --from-literal key1=value1 --from-literal key2=value2
+```
+
+From file
+
+```bash
+oc create secret generic my_secret_name --from-file key1=/path/to/file
+```
+
+TLS secret
+
+```bash
+oc create secret tls my_secret_name --cert /path/to/cert --key /path/to/key
+```
+
 ## OC SET
 
 Configure application resources. This commands help you make changes to existing application resources.
