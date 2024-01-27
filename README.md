@@ -8,7 +8,7 @@ Most common Openshift CLI commands with examples.
 
 ```bash
 oc completion bash > ~/.oc_bash_completion.sh
-echo "source .oc_bash_completion.sh" >> ~/.bashrc
+echo "source ~/.oc_bash_completion.sh" >> ~/.bashrc
 source ~/.bashrc
 ```
 
