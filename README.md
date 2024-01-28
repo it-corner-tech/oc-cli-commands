@@ -254,7 +254,11 @@ oc port-forward podname EXTERNAL_PORT:CONTAINER_POD
 Connect to running container
 
 ```bash
-oc rsh pod
+oc rsh pod-name
+```
+
+```bash
+oc rsh deployment/my-deployment
 ```
 
 ## OC IMAGE
@@ -399,6 +403,19 @@ Type configmap
 ```bash
 oc set volume deployment/mydeployment --add\
  --type configmap --configmap-name my-configmap --mount-path /app-configs
+```
+
+Type PersistentVolumeClaim
+
+```bash
+oc set volume deployment/mydeployment --add \
+ --name my-volume \
+ --type persistentVolumeClaim \
+ --claim-mode rwo \
+ --claim-size 15Gi \
+ --mount-path /var/mydata \
+ --claim-class storage-class \
+ --claim-name my-pvc
 ```
 
 ## OC EXPOSE
