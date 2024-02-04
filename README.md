@@ -450,6 +450,14 @@ Set a new size for a deployment, replica set, replication controller, or statefu
 oc scale deployment test --replicas 2
 ```
 
+## OC AUTOSCALE
+
+Creates an autoscaler that automatically chooses and sets the number of pods that run in a Kubernetes cluster.
+
+```bash
+oc autoscale deployment/my-deployment --min 1 --max 8 --cpu-percent 70 --memory-percent 95
+```
+
 ## OC ANNOTATE
 
 Update the annotations on one or more resources.
