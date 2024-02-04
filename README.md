@@ -426,6 +426,16 @@ Specify compute resource requirements (cpu, memory) for any resource that define
 oc set resources deployment my-dep --requests cpu=10m,memory=1gi
 ```
 
+### OC SET PROBE
+
+Set or remove a liveness, readiness or startup probe from a pod or pod template.
+
+```bash
+oc set prove deployment/my-deployment --readiness \
+ --initial-delay-seconds 7\
+ --get-url http://:8080/health
+```
+
 ## OC EXPOSE
 
 Expose containers internally as services or externally via routes
