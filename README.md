@@ -418,6 +418,14 @@ oc set volume deployment/mydeployment --add \
  --claim-name my-pvc
 ```
 
+### OC SET RESOURCES
+
+Specify compute resource requirements (cpu, memory) for any resource that defines a pod template.
+
+```bash
+oc set resources deployment my-dep --requests cpu=10m,memory=1gi
+```
+
 ## OC EXPOSE
 
 Expose containers internally as services or externally via routes
