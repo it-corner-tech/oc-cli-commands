@@ -468,6 +468,38 @@ Creates an autoscaler that automatically chooses and sets the number of pods tha
 oc autoscale deployment/my-deployment --min 1 --max 8 --cpu-percent 70 --memory-percent 95
 ```
 
+## OC ROLLOUT
+
+Start a new rollout, view its status or history, rollback to a previous revision of your app.
+
+```bash
+oc rollout pause deployment/myapp
+```
+
+```bash
+oc rollout resume deployment/myapp
+```
+
+```bash
+oc rollout undo deployment/myapp  --to-revision 1
+```
+
+```bash
+oc rollout status deployment/myapp
+```
+
+```bash
+oc rollout history deployment/myapp --revision 1
+```
+
+> Note:
+>  
+> The CHANGE-CAUSE column provides a user-defined message that describes the revision. You can store the message in the kubernetes.io/change-cause deployment annotation after every rollout.
+
+```bash
+oc rollout history deployment/myapp --revision 1
+```
+
 ## OC ANNOTATE
 
 Update the annotations on one or more resources.
