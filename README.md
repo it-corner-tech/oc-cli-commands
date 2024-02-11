@@ -289,6 +289,59 @@ oc get clusteroperators
 oc describe clusteroperators openshift-apiserver
 ```
 
+## OC IMAGE STREAMS
+
+### OC CREASE IS
+
+```bash
+oc create is my-is
+```
+
+### OC CREATE ISTAG
+
+```bash
+oc create istag my-is:v1.0 \
+ --from-image myremote-repo/my-remote-image:tag
+```
+
+### OC SET IMAGE-LOOKUP
+
+Enable image stream resolution for the my-is image stream so that Kubernetes resources in the current project can use it.
+
+```bash
+oc set image-lookup my-is
+```
+
+```bash
+oc set image-lookup
+```
+
+### OC SET TRIGGERS
+
+Detected changes in IS
+
+```bash
+oc set triggers deployment/my-depl \
+  --from-image my-is:1 --containers my-container
+```
+
+```bash
+oc set triggers deployment/my-depl
+```
+
+```bash
+oc get deployment my-depl \
+  -o jsonpath='{.metadata.annotations.image\.openshift\.io/triggers}' | jq .
+```
+
+## OC TAG
+
+Update Image stream tag
+
+```bash
+oc tag myregitry/myimage:new-image-tag existing-is:existing-istag
+```
+
 ## OC NEW-APP
 
 Create a new application by specifying source code, templates, and/or images.
@@ -434,6 +487,12 @@ Set or remove a liveness, readiness or startup probe from a pod or pod template.
 oc set prove deployment/my-deployment --readiness \
  --initial-delay-seconds 7\
  --get-url http://:8080/health
+```
+
+### OC SET IMAGE
+
+```bash
+oc set image deployment/mydeployment my-container-name-in-pod=my-image
 ```
 
 ## OC EXPOSE
