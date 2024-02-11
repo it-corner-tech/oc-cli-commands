@@ -342,6 +342,12 @@ Update Image stream tag
 oc tag myregitry/myimage:new-image-tag existing-is:existing-istag
 ```
 
+Move alias to another istag
+
+```bash
+oc tag --help new-image-stream-tag existing-alias
+```
+
 ## OC NEW-APP
 
 Create a new application by specifying source code, templates, and/or images.
